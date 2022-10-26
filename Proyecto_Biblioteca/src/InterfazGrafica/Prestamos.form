@@ -46,7 +46,7 @@
           <text value="Eliminar"/>
         </properties>
       </component>
-      <component id="be9e7" class="javax.swing.JButton" binding="añadirButton" default-binding="true">
+      <component id="be9e7" class="javax.swing.JButton" binding="anadirButton">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

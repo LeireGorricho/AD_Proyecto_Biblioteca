@@ -72,7 +72,7 @@ public class Clientes extends JFrame{
 
     public void cargarDatos() {
         try {
-            File file = new File("Libros.dat");
+            File file = new File("Clientes.dat");
             FileInputStream filein = new FileInputStream(file);
             ObjectInputStream fileobj = new ObjectInputStream(filein);
 

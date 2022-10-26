@@ -20,6 +20,7 @@ public class MenuCliente extends JFrame{
                 JFrame frame = new LibrosCliente();
                 frame.setSize(500, 300);
                 frame.setVisible(true);
+                dispose();
             }
         });
         prestamoButton.addActionListener(new ActionListener() {
@@ -28,12 +29,14 @@ public class MenuCliente extends JFrame{
                 JFrame frame = new Prestamo();
                 frame.setSize(500, 300);
                 frame.setVisible(true);
+                dispose();
             }
         });
         seleccionSemanalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Mostrar selección semanal
+                dispose();
             }
         });
         salirButton.addActionListener(new ActionListener() {

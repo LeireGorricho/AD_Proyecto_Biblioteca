@@ -12,8 +12,8 @@ public class CrearFichEmpleados {
             ObjectOutputStream fileobj = new ObjectOutputStream(fileout);
 
             int[] ids = {1, 2, 3, 4, 5};
-            String[] usuario = {"Empleado1", "Empleado2", "Empleado3", "Empleado4", "Empleado5"};
-            String[] contrasena = {"12345", "12345", "12345", "12345", "12345"};
+            String[] usuario = {"admin", "Empleado1", "Empleado2", "Empleado3", "Empleado4"};
+            String[] contrasena = {"admin", "12345", "12345", "12345", "12345"};
 
             for (int i = 0; i < ids.length; i++) {
                 Empleado nuevoEmpleado = new Empleado(ids[i], usuario[i], contrasena[i]);

@@ -23,6 +23,7 @@ public class MenuEmpleado extends JFrame{
                 JFrame frame = new LibrosEmpleado();
                 frame.setSize(500, 300);
                 frame.setVisible(true);
+                dispose();
             }
         });
         clientesButton.addActionListener(new ActionListener() {
@@ -31,6 +32,7 @@ public class MenuEmpleado extends JFrame{
                 JFrame frame = new Clientes();
                 frame.setSize(500, 300);
                 frame.setVisible(true);
+                dispose();
             }
         });
         prestamosButton.addActionListener(new ActionListener() {
@@ -39,6 +41,7 @@ public class MenuEmpleado extends JFrame{
                 JFrame frame = new Prestamos();
                 frame.setSize(500, 300);
                 frame.setVisible(true);
+                dispose();
             }
         });
         salirButton.addActionListener(new ActionListener() {
