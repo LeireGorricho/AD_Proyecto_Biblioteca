@@ -1,23 +1,41 @@
 package Clases;
 
-public class Empleado {
+import java.io.Serializable;
+public class Empleado implements Serializable{
 
     int id;
     String usuario;
     String contrasenia;
-    String apellido;
-    int telefono;
-    String email;
-    double salario;
 
     // Constructor
-    public Empleado(int id, String usuario, String contrasenia, String apellido, int telefono, String email, double salario) {
+    public Empleado(int id, String usuario, String contrasenia) {
         this.id = id;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.email = email;
-        this.salario = salario;
+    }
+
+    // Getters & Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 }

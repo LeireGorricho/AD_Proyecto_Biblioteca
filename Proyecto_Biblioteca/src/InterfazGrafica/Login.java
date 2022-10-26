@@ -2,7 +2,7 @@ package InterfazGrafica;
 
 import javax.swing.*;
 
-public class Login {
+public class Login extends JFrame{
     private JTextField tfUsuario;
     private JTextField tfContrasena;
     private JLabel LabelInicioSesion;
@@ -10,4 +10,9 @@ public class Login {
     private JLabel LabelContrasena;
     private JButton buttonEmpleado;
     private JButton buttonCliente;
+
+    public Login() {
+
+    }
+
 }

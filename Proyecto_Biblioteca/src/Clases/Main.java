@@ -1,7 +1,17 @@
 package Clases;
 
+import InterfazGrafica.Login;
+
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame frame = new Login();
+                frame.setSize(500, 300);
+                frame.setVisible(true);
+            }
+        });
     }
 }

@@ -2,7 +2,7 @@ package InterfazGrafica;
 
 import javax.swing.*;
 
-public class Prestamo {
+public class Prestamo extends JFrame{
     private JTable table1;
     private JButton volverAlMenúButton;
     private JButton finalizarPréstamosButton;

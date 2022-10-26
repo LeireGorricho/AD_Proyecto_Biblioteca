@@ -1,11 +1,47 @@
 package InterfazGrafica;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MenuCliente {
+public class MenuCliente extends JFrame{
     private JLabel LabelMenu;
     private JButton salirButton;
-    private JButton selecciónSemanalButton;
+    private JButton seleccionSemanalButton;
     private JButton prestamoButton;
     private JButton verLibrosButton;
+    private JPanel panel1;
+
+    public MenuCliente() {
+        setContentPane(panel1);
+        verLibrosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new LibrosCliente();
+                frame.setSize(500, 300);
+                frame.setVisible(true);
+            }
+        });
+        prestamoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new Prestamo();
+                frame.setSize(500, 300);
+                frame.setVisible(true);
+            }
+        });
+        seleccionSemanalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Mostrar selección semanal
+            }
+        });
+        salirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                System.exit(0);
+            }
+        });
+    }
 }
