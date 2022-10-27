@@ -27,7 +27,7 @@ public class AñadirCliente extends JFrame{
         anadirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                anadirLibro();
+                anadirCliente();
             }
         });
         cancelarButton.addActionListener(new ActionListener() {
@@ -41,7 +41,7 @@ public class AñadirCliente extends JFrame{
         });
     }
 
-    public void anadirLibro() {
+    public void anadirCliente() {
         try {
             String usuario = textFieldusuario.getText();
             String contrasena = textFieldcontrasena.getText();
@@ -50,26 +50,30 @@ public class AñadirCliente extends JFrame{
             int telefono = Integer.parseInt(textFieldtelefono.getText());
             String email = textFieldemail.getText();
 
-            int id = datos.get(datos.size() - 1).getId() + 1;
+            if (usuario.trim().equals("") || contrasena.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")|| String.valueOf(telefono).length() != 9 || email.trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "No se ha podido añadir el cliente. Comprueba que los datos insertados son correctos");
+            }else {
+                int id = datos.get(datos.size() - 1).getId() + 1;
 
-            datos.add(new Cliente(id, usuario, contrasena, nombre, apellido, telefono, email));
+                datos.add(new Cliente(id, usuario, contrasena, nombre, apellido, telefono, email));
 
-            File file = new File("Clientes.dat");
-            FileOutputStream fileo = new FileOutputStream(file);
-            ObjectOutputStream fileobj = new ObjectOutputStream(fileo);
+                File file = new File("Clientes.dat");
+                FileOutputStream fileo = new FileOutputStream(file);
+                ObjectOutputStream fileobj = new ObjectOutputStream(fileo);
 
-            for (Cliente dato : datos) {
-                fileobj.writeObject(dato);
+                for (Cliente dato : datos) {
+                    fileobj.writeObject(dato);
+                }
+
+                JOptionPane.showMessageDialog(null, "El cliente se ha añadido correctamente.");
+
+                fileobj.close();
+
+                JFrame frame = new Clientes();
+                frame.setSize(500, 300);
+                frame.setVisible(true);
+                dispose();
             }
-
-            JOptionPane.showMessageDialog(null, "El cliente se ha añadido correctamente.");
-
-            fileobj.close();
-
-            JFrame frame = new Clientes();
-            frame.setSize(500, 300);
-            frame.setVisible(true);
-            dispose();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Introduce valores correctos");
         } catch (FileNotFoundException e) {

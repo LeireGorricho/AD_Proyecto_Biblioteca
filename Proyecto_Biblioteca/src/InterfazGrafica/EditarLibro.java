@@ -35,39 +35,50 @@ public class EditarLibro extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    for (Libro dato : datos) {
-                        if (dato.getId() == id) {
-                            dato.setNombre(textFieldnombre.getText());
-                            dato.setAutor(textFieldautor.getText());
-                            dato.setGenero(textFieldgenero.getText());
-                            dato.setEditorial(textFieldeditorial.getText());
-                            dato.setIdioma(textFieldidioma.getText());
-                            dato.setNum_paginas(Integer.parseInt(textFieldnumpaginas.getText()));
+                    String nombre = textFieldnombre.getText();
+                    String autor = textFieldautor.getText();
+                    String genero = textFieldgenero.getText();
+                    String editorial = textFieldeditorial.getText();
+                    String idioma = textFieldidioma.getText();
+                    int num_paginas = Integer.parseInt(textFieldnumpaginas.getText());
+
+                    if (nombre.trim().equals("") || autor.trim().equals("") || genero.trim().equals("") || editorial.trim().equals("") || idioma.trim().equals("")) {
+                        JOptionPane.showMessageDialog(null, "No se ha podido editar el libro. Comprueba que los datos insertados son correctos");
+                    }else {
+                        for (Libro dato : datos) {
+                            if (dato.getId() == id) {
+                                dato.setNombre(nombre);
+                                dato.setAutor(autor);
+                                dato.setGenero(genero);
+                                dato.setEditorial(editorial);
+                                dato.setIdioma(idioma);
+                                dato.setNum_paginas(num_paginas);
+                            }
                         }
+
+                        File file = new File("Libros.dat");
+                        FileOutputStream fileo = new FileOutputStream(file);
+                        ObjectOutputStream fileobj = new ObjectOutputStream(fileo);
+
+                        for (Libro dato : datos) {
+                            fileobj.writeObject(dato);
+                        }
+
+                        fileobj.close();
+
+                        JOptionPane.showMessageDialog(null, "Se ha editado el libro correctamente.");
+
+                        JFrame frame = new LibrosEmpleado();
+                        frame.setSize(500, 300);
+                        frame.setVisible(true);
+                        dispose();
                     }
-
-                    File file = new File("Libros.dat");
-                    FileOutputStream fileo = new FileOutputStream(file);
-                    ObjectOutputStream fileobj = new ObjectOutputStream(fileo);
-
-                    for (Libro dato : datos) {
-                        fileobj.writeObject(dato);
-                    }
-
-                    fileobj.close();
-
-                    JOptionPane.showMessageDialog(null, "Se ha editado el libro correctamente.");
-
-                    JFrame frame = new LibrosEmpleado();
-                    frame.setSize(500, 300);
-                    frame.setVisible(true);
-                    dispose();
                 } catch (FileNotFoundException ex) {
                     JOptionPane.showMessageDialog(null, "No se ha podido encontrar el archivo.");
                 } catch (IOException ex) {
                     System.out.println("");
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Introduce valores correctos");
+                    JOptionPane.showMessageDialog(null, "Introduce valores numéricos correctos");
                 }
             }
         });

@@ -22,14 +22,26 @@ public class EditarCliente extends JFrame {
 
     public EditarCliente(int id, List<Cliente> datos) {
         setContentPane(panelCliente);
-        for (Cliente dato : datos) {
-            if (dato.getId() == id) {
-                textFieldusuario.setText(dato.getUsuario());
-                textFieldcontrasena.setText(dato.getContrasenia());
-                textFieldnombre.setText(dato.getNombre());
-                textFieldapellido.setText(dato.getApellido());
-                textFieldtelefono.setText(String.valueOf(dato.getTelefono()));
-                textFieldemail.setText(dato.getEmail());
+
+        String usuario = textFieldusuario.getText();
+        String contrasena = textFieldcontrasena.getText();
+        String nombre = textFieldnombre.getText();
+        String apellido = textFieldapellido.getText();
+        int telefono = Integer.parseInt(textFieldtelefono.getText());
+        String email = textFieldemail.getText();
+
+        if (usuario.trim().equals("") || contrasena.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")|| String.valueOf(telefono).length() != 9 || email.trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "No se ha podido editar el cliente. Comprueba que los datos insertados son correctos");
+        }else {
+            for (Cliente dato : datos) {
+                if (dato.getId() == id) {
+                    dato.setUsuario(usuario);
+                    dato.setContrasenia(dato.getContrasenia());
+                    dato.setNombre(nombre);
+                    dato.setApellido(apellido);
+                    dato.setTelefono(telefono);
+                    dato.setEmail(email);
+                }
             }
         }
         editarButton.addActionListener(new ActionListener() {
@@ -68,7 +80,7 @@ public class EditarCliente extends JFrame {
                 } catch (IOException ex) {
                     System.out.println("");
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Introduce valores correctos");
+                    JOptionPane.showMessageDialog(null, "Introduce valores numéricos correctos");
                 }
             }
         });

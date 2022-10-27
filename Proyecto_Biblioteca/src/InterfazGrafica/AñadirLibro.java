@@ -57,26 +57,31 @@ public class AñadirLibro extends JFrame{
             String idioma = textFieldidioma.getText();
             int num_paginas = Integer.parseInt(textFieldnumpaginas.getText());
 
-            int id = datos.get(datos.size() - 1).getId() + 1;
+            if (nombre.trim().equals("") || autor.trim().equals("") || genero.trim().equals("") || editorial.trim().equals("") || idioma.trim().equals("") || String.valueOf(num_paginas).length() != 9) {
+                JOptionPane.showMessageDialog(null, "No se ha podido añadir el libro. Comprueba que los datos insertados son correctos");
+            }else {
 
-            datos.add(new Libro(id,  nombre, autor, genero, editorial, idioma, num_paginas));
+                int id = datos.get(datos.size() - 1).getId() + 1;
 
-            File file = new File("Libros.dat");
-            FileOutputStream fileo = new FileOutputStream(file);
-            ObjectOutputStream fileobj = new ObjectOutputStream(fileo);
+                datos.add(new Libro(id, nombre, autor, genero, editorial, idioma, num_paginas));
 
-            for (Libro dato : datos) {
-                fileobj.writeObject(dato);
+                File file = new File("Libros.dat");
+                FileOutputStream fileo = new FileOutputStream(file);
+                ObjectOutputStream fileobj = new ObjectOutputStream(fileo);
+
+                for (Libro dato : datos) {
+                    fileobj.writeObject(dato);
+                }
+
+                JOptionPane.showMessageDialog(null, "El libro se ha añadido correctamente.");
+
+                fileobj.close();
+
+                JFrame frame = new LibrosEmpleado();
+                frame.setSize(500, 300);
+                frame.setVisible(true);
+                dispose();
             }
-
-            JOptionPane.showMessageDialog(null, "El libro se ha añadido correctamente.");
-
-            fileobj.close();
-
-            JFrame frame = new LibrosEmpleado();
-            frame.setSize(500, 300);
-            frame.setVisible(true);
-            dispose();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Introduce valores correctos");
         } catch (FileNotFoundException e) {
