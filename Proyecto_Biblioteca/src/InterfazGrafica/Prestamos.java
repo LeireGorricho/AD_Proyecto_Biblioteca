@@ -1,6 +1,5 @@
 package InterfazGrafica;
 
-import Clases.Libro;
 import Clases.Prestamo;
 
 import javax.swing.*;
@@ -44,8 +43,12 @@ public class Prestamos extends JFrame{
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
-                eliminarPrestamo(id);
+                if (table1.getSelectedRow() == -1) {
+                    JOptionPane.showMessageDialog(null, "Selecciona en la tabla qué préstamo quieres eliminar");
+                } else {
+                    int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
+                    eliminarPrestamo(id);
+                }
             }
         });
         volverAlMenúButton.addActionListener(new ActionListener() {
@@ -80,15 +83,15 @@ public class Prestamos extends JFrame{
 
     public void modificarTabla() {
         cargarDatos();
-        String[] nombreColumnas = {"id", "Fecha", "Dias_prestamo", "Id_Libro", "Id_Cliente"};
+        String[] nombreColumnas = {"Id", "Fecha", "Dias_prestamo", "Libro", "Cliente"};
         int cantidad = datos.size();
         String[][] d = new String[cantidad][5];
         for (int i = 0; i < datos.size(); i++) {
             d[i][0] = String.valueOf(datos.get(i).getId());
             d[i][1] = String.valueOf(datos.get(i).getFecha());
             d[i][2] = String.valueOf(datos.get(i).getDias_prestamo());
-            d[i][3] = String.valueOf(datos.get(i).getId_libro());
-            d[i][4] = String.valueOf(datos.get(i).getId_cliente());
+            d[i][3] = String.valueOf(datos.get(i).getLibro());
+            d[i][4] = String.valueOf(datos.get(i).getCliente());
         }
         table1.setModel(new DefaultTableModel(d, nombreColumnas));
     }

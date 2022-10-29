@@ -53,7 +53,12 @@ public class AñadirCliente extends JFrame{
             if (usuario.trim().equals("") || contrasena.trim().equals("") || nombre.trim().equals("") || apellido.trim().equals("")|| String.valueOf(telefono).length() != 9 || email.trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "No se ha podido añadir el cliente. Comprueba que los datos insertados son correctos");
             }else {
-                int id = datos.get(datos.size() - 1).getId() + 1;
+                // Esto es para controlar que no de error cuando no hay ningún cliente
+                int i = datos.size();
+                if (i == 0){
+                    i = 1;
+                }
+                int id = datos.get(i - 1).getId() + 1;
 
                 datos.add(new Cliente(id, usuario, contrasena, nombre, apellido, telefono, email));
 

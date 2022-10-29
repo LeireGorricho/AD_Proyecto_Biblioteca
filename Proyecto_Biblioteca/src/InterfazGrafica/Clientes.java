@@ -44,8 +44,12 @@ public class Clientes extends JFrame{
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
-                eliminarCliente(id);
+                if (table1.getSelectedRow() == -1) {
+                    JOptionPane.showMessageDialog(null, "Selecciona en la tabla qué cliente quieres eliminar");
+                } else {
+                    int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
+                    eliminarCliente(id);
+                }
             }
         });
         volverAlMenúButton.addActionListener(new ActionListener() {
@@ -60,12 +64,16 @@ public class Clientes extends JFrame{
         editarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
-                cargarDatos();
-                JFrame frame = new EditarCliente(id, datos);
-                frame.setSize(500, 300);
-                frame.setVisible(true);
-                dispose();
+                if (table1.getSelectedRow() == -1) {
+                    JOptionPane.showMessageDialog(null, "Selecciona en la tabla qué cliente quieres editar");
+                } else {
+                    int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
+                    cargarDatos();
+                    JFrame frame = new EditarCliente(id, datos);
+                    frame.setSize(500, 300);
+                    frame.setVisible(true);
+                    dispose();
+                }
             }
         });
     }

@@ -44,8 +44,12 @@ public class LibrosEmpleado extends JFrame{
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
-                eliminarLibro(id);
+                if (table1.getSelectedRow() == -1) {
+                    JOptionPane.showMessageDialog(null, "Selecciona en la tabla qué libro quieres eliminar");
+                } else {
+                    int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
+                    eliminarLibro(id);
+                }
             }
         });
         volverAlMenúButton.addActionListener(new ActionListener() {
@@ -60,12 +64,16 @@ public class LibrosEmpleado extends JFrame{
         editarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
-                cargarDatos();
-                JFrame frame = new EditarLibro(id, datos);
-                frame.setSize(500, 300);
-                frame.setVisible(true);
-                dispose();
+                if (table1.getSelectedRow() == -1) {
+                    JOptionPane.showMessageDialog(null, "Selecciona en la tabla qué libro quieres editar");
+                } else {
+                    int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
+                    cargarDatos();
+                    JFrame frame = new EditarLibro(id, datos);
+                    frame.setSize(500, 300);
+                    frame.setVisible(true);
+                    dispose();
+                }
             }
         });
     }

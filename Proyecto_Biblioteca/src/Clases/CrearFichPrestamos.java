@@ -14,11 +14,12 @@ public class CrearFichPrestamos {
             int[] ids = {1, 2, 3, 4, 5};
             String[] fechas = {};
             int[] dias_prestamos = {};
-            int[] ids_cliente = {};
-            int[] ids_libro = {};
+            String[] libros = {};
+            String[] clientes = {};
+
 
             for (int i = 0; i < ids.length; i++) {
-                Prestamo nuevoPrestamo = new Prestamo(ids[i], fechas[i], dias_prestamos[i], ids_cliente[i], ids_libro[i]);
+                Prestamo nuevoPrestamo = new Prestamo(ids[i], fechas[i], dias_prestamos[i], libros[i], clientes[i]);
                 fileobj.writeObject(nuevoPrestamo);
             }
 

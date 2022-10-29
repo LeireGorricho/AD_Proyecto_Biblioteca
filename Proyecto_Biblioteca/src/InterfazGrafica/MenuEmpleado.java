@@ -47,8 +47,10 @@ public class MenuEmpleado extends JFrame{
         salirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JFrame frame = new Login();
+                frame.setSize(500, 300);
+                frame.setVisible(true);
                 dispose();
-                System.exit(0);
             }
         });
     }

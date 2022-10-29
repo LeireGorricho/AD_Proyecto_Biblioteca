@@ -8,7 +8,6 @@ public class MenuCliente extends JFrame{
     private JLabel LabelMenu;
     private JButton salirButton;
     private JButton seleccionSemanalButton;
-    private JButton prestamoButton;
     private JButton verLibrosButton;
     private JPanel panel1;
 
@@ -18,15 +17,6 @@ public class MenuCliente extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new LibrosCliente();
-                frame.setSize(500, 300);
-                frame.setVisible(true);
-                dispose();
-            }
-        });
-        prestamoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame = new Prestamo();
                 frame.setSize(500, 300);
                 frame.setVisible(true);
                 dispose();
@@ -42,8 +32,10 @@ public class MenuCliente extends JFrame{
         salirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JFrame frame = new Login();
+                frame.setSize(500, 300);
+                frame.setVisible(true);
                 dispose();
-                System.exit(0);
             }
         });
     }
