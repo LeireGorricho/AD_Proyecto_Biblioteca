@@ -55,11 +55,12 @@ public class AñadirCliente extends JFrame{
             }else {
                 // Esto es para controlar que no de error cuando no hay ningún cliente
                 int i = datos.size();
+                int id;
                 if (i == 0){
-                    i = 1;
+                    id = 1;
+                } else {
+                    id = datos.get(i - 1).getId() + 1;
                 }
-                int id = datos.get(i - 1).getId() + 1;
-
                 datos.add(new Cliente(id, usuario, contrasena, nombre, apellido, telefono, email));
 
                 File file = new File("Clientes.dat");

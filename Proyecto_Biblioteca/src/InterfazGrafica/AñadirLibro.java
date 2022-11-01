@@ -60,8 +60,14 @@ public class AñadirLibro extends JFrame{
             if (nombre.trim().equals("") || autor.trim().equals("") || genero.trim().equals("") || editorial.trim().equals("") || idioma.trim().equals("") || String.valueOf(num_paginas).length() != 9) {
                 JOptionPane.showMessageDialog(null, "No se ha podido añadir el libro. Comprueba que los datos insertados son correctos");
             }else {
-
-                int id = datos.get(datos.size() - 1).getId() + 1;
+                // Esto es para controlar que no de error cuando no hay ningún libro
+                int i = datos.size();
+                int id;
+                if (i == 0){
+                    id = 1;
+                } else{
+                    id = datos.get(i - 1).getId() + 1;
+                }
 
                 datos.add(new Libro(id, nombre, autor, genero, editorial, idioma, num_paginas));
 

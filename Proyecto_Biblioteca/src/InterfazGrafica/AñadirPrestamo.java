@@ -112,7 +112,6 @@ public class AñadirPrestamo extends JFrame{
                 } else{
                     id = datosPrestamos.get(i - 1).getId() + 1;
                 }
-
                 datosPrestamos.add(new Prestamo(id, fecha, dias, libro, cliente));
 
                 File file = new File("Prestamos.dat");
