@@ -15,7 +15,7 @@ import java.util.List;
 
 public class LibrosCliente extends JFrame{
     private JTable table1;
-    private JButton volverAlMenúButton;
+    private JButton volverAlMenuButton;
     private JPanel panelLibros;
 
     public List<Libro> datos = new ArrayList<Libro>();
@@ -24,7 +24,7 @@ public class LibrosCliente extends JFrame{
         setContentPane(panelLibros);
         modificarTabla();
 
-        volverAlMenúButton.addActionListener(new ActionListener() {
+        volverAlMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new MenuCliente();
