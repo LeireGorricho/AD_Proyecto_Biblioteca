@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import Clases.Cliente;
+import Clases.Libro;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,17 @@ public class EditarCliente extends JFrame {
 
     public EditarCliente(int id, List<Cliente> datos) {
         setContentPane(panelCliente);
+        for (Cliente dato : datos) {
+            if (dato.getId() == id) {
+                textFieldusuario.setText(dato.getUsuario());
+                textFieldcontrasena.setText(dato.getContrasenia());
+                textFieldnombre.setText(dato.getNombre());
+                textFieldapellido.setText(dato.getApellido());
+                textFieldtelefono.setText(String.valueOf(dato.getTelefono()));
+                textFieldemail.setText(dato.getEmail());
+            }
+        }
+
 
         String usuario = textFieldusuario.getText();
         String contrasena = textFieldcontrasena.getText();
@@ -48,33 +60,44 @@ public class EditarCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    for (Cliente dato : datos) {
-                        if (dato.getId() == id) {
-                            dato.setUsuario(textFieldusuario.getText());
-                            dato.setContrasenia(textFieldcontrasena.getText());
-                            dato.setNombre(textFieldnombre.getText());
-                            dato.setApellido(textFieldapellido.getText());
-                            dato.setTelefono(Integer.parseInt(textFieldtelefono.getText()));
-                            dato.setEmail(textFieldemail.getText());
+                    String usuario = textFieldusuario.getText();
+                    String contrasena = textFieldcontrasena.getText();
+                    String nombre = textFieldnombre.getText();
+                    String apellido = textFieldapellido.getText();
+                    int telefono = Integer.parseInt(textFieldtelefono.getText());
+                    String email = textFieldemail.getText();
+
+                    if (usuario.trim().equals("") || contrasena.trim().equals("") || nombre.trim().equals("") || String.valueOf(telefono).length() != 9 || email.trim().equals("")) {
+                        JOptionPane.showMessageDialog(null, "No se ha podido editar el libro. Comprueba que los datos insertados son correctos");
+                    }else {
+                        for (Cliente dato : datos) {
+                            if (dato.getId() == id) {
+                                dato.setUsuario(usuario);
+                                dato.setContrasenia(contrasena);
+                                dato.setNombre(nombre);
+                                dato.setApellido(apellido);
+                                dato.setTelefono(telefono);
+                                dato.setEmail(email);
+                            }
                         }
+
+                        File file = new File("Clientes.dat");
+                        FileOutputStream fileo = new FileOutputStream(file);
+                        ObjectOutputStream fileobj = new ObjectOutputStream(fileo);
+
+                        for (Cliente dato : datos) {
+                            fileobj.writeObject(dato);
+                        }
+
+                        fileobj.close();
+
+                        JOptionPane.showMessageDialog(null, "Se ha editado el cliente correctamente.");
+
+                        JFrame frame = new Clientes();
+                        frame.setSize(750, 400);
+                        frame.setVisible(true);
+                        dispose();
                     }
-
-                    File file = new File("Cliente.dat");
-                    FileOutputStream fileo = new FileOutputStream(file);
-                    ObjectOutputStream fileobj = new ObjectOutputStream(fileo);
-
-                    for (Cliente dato : datos) {
-                        fileobj.writeObject(dato);
-                    }
-
-                    fileobj.close();
-
-                    JOptionPane.showMessageDialog(null, "Se ha editado el cliente correctamente.");
-
-                    JFrame frame = new Clientes();
-                    frame.setSize(750, 400);
-                    frame.setVisible(true);
-                    dispose();
                 } catch (FileNotFoundException ex) {
                     JOptionPane.showMessageDialog(null, "No se ha podido encontrar el archivo.");
                 } catch (IOException ex) {

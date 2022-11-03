@@ -86,7 +86,7 @@ public class EditarLibro extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new LibrosEmpleado();
-                frame.setSize(750, 400);
+                frame.setSize(750, 300);
                 frame.setVisible(true);
                 dispose();
             }

@@ -1,3 +1,39 @@
 <Clases.ListaPrestamos>
-  <lista/>
+  <lista>
+    <Clases.Prestamo>
+      <id>1</id>
+      <fecha>15/10/2022</fecha>
+      <dias__prestamo>10</dias__prestamo>
+      <libro>El principito</libro>
+      <cliente>cliente</cliente>
+    </Clases.Prestamo>
+    <Clases.Prestamo>
+      <id>2</id>
+      <fecha>10/10/2022</fecha>
+      <dias__prestamo>15</dias__prestamo>
+      <libro>La celestina</libro>
+      <cliente>MariaPerez</cliente>
+    </Clases.Prestamo>
+    <Clases.Prestamo>
+      <id>3</id>
+      <fecha>20/10/2022</fecha>
+      <dias__prestamo>7</dias__prestamo>
+      <libro>Orgullo y prejuicio</libro>
+      <cliente>PepeGarcia</cliente>
+    </Clases.Prestamo>
+    <Clases.Prestamo>
+      <id>4</id>
+      <fecha>21/10/2022</fecha>
+      <dias__prestamo>20</dias__prestamo>
+      <libro>1 El principito</libro>
+      <cliente>1 Cliente Cliente</cliente>
+    </Clases.Prestamo>
+    <Clases.Prestamo>
+      <id>5</id>
+      <fecha>20/10/2022</fecha>
+      <dias__prestamo>16</dias__prestamo>
+      <libro>4 La casa de Bernarda Alba</libro>
+      <cliente>3 Maria Perez</cliente>
+    </Clases.Prestamo>
+  </lista>
 </Clases.ListaPrestamos>
