@@ -35,7 +35,7 @@ public class Prestamos extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 cargarDatos();
                 JFrame frame = new AñadirPrestamo(datos);
-                frame.setSize(500, 300);
+                frame.setSize(500, 250);
                 frame.setVisible(true);
                 dispose();
             }

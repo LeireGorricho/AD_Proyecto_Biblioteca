@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<PrestamosDOM>
+    <prestamo>
+        <id>1</id>
+        <fecha>02/11/2022</fecha>
+        <libro>1 El principito</libro>
+        <cliente>1 Pepe Garcia</cliente>
+    </prestamo>
+</PrestamosDOM>

@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public class MenuCliente extends JFrame{
     private JLabel LabelMenu;
     private JButton salirButton;
-    private JButton seleccionSemanalButton;
     private JButton verLibrosButton;
     private JPanel panel1;
 
@@ -17,15 +16,8 @@ public class MenuCliente extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new LibrosCliente();
-                frame.setSize(500, 300);
+                frame.setSize(600, 300);
                 frame.setVisible(true);
-                dispose();
-            }
-        });
-        seleccionSemanalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Mostrar selección semanal
                 dispose();
             }
         });

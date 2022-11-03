@@ -72,7 +72,7 @@ public class EditarCliente extends JFrame {
                     JOptionPane.showMessageDialog(null, "Se ha editado el cliente correctamente.");
 
                     JFrame frame = new Clientes();
-                    frame.setSize(500, 300);
+                    frame.setSize(750, 400);
                     frame.setVisible(true);
                     dispose();
                 } catch (FileNotFoundException ex) {
@@ -88,7 +88,7 @@ public class EditarCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new Clientes();
-                frame.setSize(500, 300);
+                frame.setSize(750, 400);
                 frame.setVisible(true);
                 dispose();
             }

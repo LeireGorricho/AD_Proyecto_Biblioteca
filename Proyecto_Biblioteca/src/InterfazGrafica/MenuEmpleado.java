@@ -39,7 +39,7 @@ public class MenuEmpleado extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new LibrosEmpleado();
-                frame.setSize(500, 300);
+                frame.setSize(750, 400);
                 frame.setVisible(true);
                 dispose();
             }
@@ -48,7 +48,7 @@ public class MenuEmpleado extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new Clientes();
-                frame.setSize(500, 300);
+                frame.setSize(750, 400);
                 frame.setVisible(true);
                 dispose();
             }
@@ -57,7 +57,7 @@ public class MenuEmpleado extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new Prestamos();
-                frame.setSize(500, 300);
+                frame.setSize(750, 400);
                 frame.setVisible(true);
                 dispose();
             }
@@ -72,10 +72,11 @@ public class MenuEmpleado extends JFrame{
             }
         });
 
-        prestamosButton.addActionListener(new ActionListener() {
+        prestamosDOMButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    cargarDatosPrestamos();
                     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
                     DocumentBuilder builder = factory.newDocumentBuilder();
                     DOMImplementation implementation = builder.getDOMImplementation();
@@ -125,6 +126,25 @@ public class MenuEmpleado extends JFrame{
         Text text = document.createTextNode(valor);
         raiz.appendChild(elem);
         elem.appendChild(text);
+    }
+
+    public void cargarDatosPrestamos() {
+        try {
+            File file = new File("Prestamos.dat");
+            FileInputStream filein = new FileInputStream(file);
+            ObjectInputStream fileobj = new ObjectInputStream(filein);
+
+            datosPrestamos.clear();
+            Prestamo prestamo;
+            while ((prestamo = (Prestamo) fileobj.readObject()) != null) {
+                datosPrestamos.add(prestamo);
+            }
+            fileobj.close();
+        } catch (IOException e) {
+            System.out.println("");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Error al intentar acceder a los datos");
+        }
     }
 
     public void exportarEmpleados() {

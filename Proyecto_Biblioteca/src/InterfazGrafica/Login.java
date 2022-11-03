@@ -60,7 +60,9 @@ public class Login extends JFrame{
                 }
 
                 try {
-                    fileobj.close();
+                    if (fileobj != null) {
+                        fileobj.close();
+                    }
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
@@ -92,7 +94,7 @@ public class Login extends JFrame{
 
                 if (correcto){
                     JFrame frame = new MenuCliente();
-                    frame.setSize(500, 300);
+                    frame.setSize(300, 200);
                     frame.setVisible(true);
                     dispose();
                 } else {
@@ -100,7 +102,9 @@ public class Login extends JFrame{
                 }
 
                 try {
-                    fileobj.close();
+                    if (fileobj != null) {
+                        fileobj.close();
+                    }
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }

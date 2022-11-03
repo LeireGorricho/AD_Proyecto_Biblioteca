@@ -49,7 +49,7 @@ public class AñadirPrestamo extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new Prestamos();
-                frame.setSize(500, 300);
+                frame.setSize(750, 400);
                 frame.setVisible(true);
                 dispose();
             }

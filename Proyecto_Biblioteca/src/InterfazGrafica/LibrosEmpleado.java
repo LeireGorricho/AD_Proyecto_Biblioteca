@@ -36,7 +36,7 @@ public class LibrosEmpleado extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 cargarDatos();
                 JFrame frame = new AñadirLibro(datos);
-                frame.setSize(500, 300);
+                frame.setSize(600, 350);
                 frame.setVisible(true);
                 dispose();
             }
@@ -70,7 +70,7 @@ public class LibrosEmpleado extends JFrame{
                     int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
                     cargarDatos();
                     JFrame frame = new EditarLibro(id, datos);
-                    frame.setSize(500, 300);
+                    frame.setSize(600, 350);
                     frame.setVisible(true);
                     dispose();
                 }

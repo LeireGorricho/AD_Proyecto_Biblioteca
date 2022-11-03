@@ -36,7 +36,7 @@ public class Clientes extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 cargarDatos();
                 JFrame frame = new AñadirCliente(datos);
-                frame.setSize(500, 300);
+                frame.setSize(650, 350);
                 frame.setVisible(true);
                 dispose();
             }
@@ -70,7 +70,7 @@ public class Clientes extends JFrame{
                     int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
                     cargarDatos();
                     JFrame frame = new EditarCliente(id, datos);
-                    frame.setSize(500, 300);
+                    frame.setSize(650, 350);
                     frame.setVisible(true);
                     dispose();
                 }
@@ -93,7 +93,7 @@ public class Clientes extends JFrame{
         } catch (IOException e) {
             System.out.println("");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Error al intentar acceder a los datos.");
+            JOptionPane.showMessageDialog(null, "Error al intentar acceder a los datos");
         }
     }
 

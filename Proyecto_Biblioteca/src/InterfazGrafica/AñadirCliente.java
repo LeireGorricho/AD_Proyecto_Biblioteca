@@ -34,7 +34,7 @@ public class AñadirCliente extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new Clientes();
-                frame.setSize(500, 300);
+                frame.setSize(750, 400);
                 frame.setVisible(true);
                 dispose();
             }
@@ -76,7 +76,7 @@ public class AñadirCliente extends JFrame{
                 fileobj.close();
 
                 JFrame frame = new Clientes();
-                frame.setSize(500, 300);
+                frame.setSize(750, 400);
                 frame.setVisible(true);
                 dispose();
             }
